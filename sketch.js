@@ -96,6 +96,7 @@ function draw() {
     }
   } else if (estado == 2) {
     createCanvas(600, 600);
+    background (0);
     if (!musica.isPlaying()) {
       musica.play();
     }
@@ -104,6 +105,7 @@ function draw() {
     }
   } else if (estado == 3) {
     createCanvas(600, 600);
+    background (0);
     if (parpadeo == true) {
       transparencia -= 2;
       if (transparencia == 20) {
@@ -132,6 +134,7 @@ function draw() {
     }
   } else if (estado == 4) {
     createCanvas(600, 600);
+    background (0);
     contador++;
     textSize(30);
     textFont(font3);
@@ -143,31 +146,38 @@ function draw() {
     }
     if (contador >= 360) {
       createCanvas(600, 600);
+      background (0);
       text("Voy a hacer\ncomo que no\nsentí nada", 90, 100);
     }
     if (contador >= 520) {
       createCanvas(600, 600);
+      background (0);
       text("Así no empezamos todavia\ny primero\nte cuento", 90, 100);
     }
     if (contador >= 640) {
       createCanvas(600, 600);
+      background (0);
       text("OK?", 90, 100);
     }
     if (contador >= 760) {
       createCanvas(600, 600);
+      background (0);
       text("Voy a suponer\nque estamos\nde acuerdo", 90, 100);
     }
     if (contador >= 880) {
       createCanvas(600, 600);
+      background (0);
       text("Lo que viene\na continuación\nte puede causar...", 90, 100);
     }
     if (contador >= 1000) {
       createCanvas(600, 600);
+      background (0);
       text("Un poco de angustia", 90, 100);
     }
 
     if (contador >= 1120) {
       createCanvas(600, 600);
+      background (0);
       text(
         "No más de la que\nya debés sentir\nen momentos\nrandom del dia",
         90,
@@ -176,14 +186,17 @@ function draw() {
     }
     if (contador >= 1250) {
       createCanvas(600, 600);
+      background (0);
       text("Ya sé que tengo razón\nsoy una máquina", 90, 100);
     }
     if (contador >= 1370) {
       createCanvas(600, 600);
+      background (0);
       text("Pero por las dudas\nte avisaba", 90, 100);
     }
     if (contador >= 1490) {
       createCanvas(600, 600);
+      background (0);
       text("Ahora sí\napretá una tecla\npara empezar", 90, 100);
       if (mouseIsPressed) {
         contador = 0;
@@ -193,6 +206,7 @@ function draw() {
   } else if (estado == 5) {
     contador++;
     createCanvas(600, 600);
+    background (0);
     text("Ay de nuevo!\nMe olvidé de algo mas...", 90, 100);
     if (contador >= 120) {
       createCanvas(600, 600);
@@ -272,6 +286,7 @@ function draw() {
     
 
   } else if (estado == 11) {
+    background (0);
     createCanvas(600, 600);
   }
 }
