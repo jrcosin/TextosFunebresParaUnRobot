@@ -47,7 +47,7 @@ function preload() {
 
 function setup() {
   createCanvas(600, 600);
-  background(0); 
+  background(0);
   const firebaseConfig = {
     apiKey: "AIzaSyBdQTQDCPC67SCHicY069DFwMg-JEoBxmY",
     authDomain: "textos-funebres-para-un-robot.firebaseapp.com",
@@ -95,8 +95,8 @@ function draw() {
       estado = 2;
     }
   } else if (estado == 2) {
-    createCanvas(600, 600);
     background (0);
+    createCanvas(600, 600);
     if (!musica.isPlaying()) {
       musica.play();
     }
