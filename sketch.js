@@ -95,8 +95,8 @@ function draw() {
       estado = 2;
     }
   } else if (estado == 2) {
-    background (0);
     createCanvas(600, 600);
+    background (0);
     if (!musica.isPlaying()) {
       musica.play();
     }
@@ -218,6 +218,7 @@ function draw() {
       estado = 6;
     }
   } else if (estado == 6) {
+    background (0);
     contador++;
     for (let i = 0; i < fragments.length; i++) {
       fragments[i].move();
@@ -228,6 +229,7 @@ function draw() {
       estado = 7;
     }
   } else if (estado == 7) {
+    background (0);
     for (let i = 0; i < fragments.length; i++) {
       fragments[i].move();
       fragments[i].display();
@@ -257,6 +259,7 @@ function draw() {
       
     }
   } else if (estado == 8) {
+    background (0);
     for (let i = 0; i < fragments.length; i++) {
       fragments[i].move();
       fragments[i].display();
@@ -272,6 +275,7 @@ function draw() {
       estado = 9;
     }
   } else if (estado == 9) {
+    background (0);
     for (let i = 0; i < fragments.length; i++) {
       fragments[i].move();
       fragments[i].display();}
