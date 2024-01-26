@@ -67,6 +67,7 @@ function convertirMesEnPalabra(mes_numero) {
 function grabarResultado() {
   database.ref("memorias").push(rec.resultString);
   grabado = true;
+  memoria_contada = rec.resultString; 
   agregarVida(); 
 }
 
