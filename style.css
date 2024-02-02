@@ -5,3 +5,14 @@ html, body {
 canvas {
   display: block;
 }
+
+button {
+  background-color: #4CAF50;
+  color: white; 
+  font size: 30 px; 
+  padding: 10 px 20 px;
+  border: none; 
+  cursor: pointer;
+  width: 100 px;
+  height:70 px;  
+}
