@@ -1,12 +1,32 @@
+function activarBloqueoPantalla() {
+  if ("wakeLock" in navigator) {
+    navigator.wakeLock.request("screen").then((wl) => {
+      wakeLock = wl;
+      console.log("Bloqueo de pantalla activado.");
+    });
+  }
+}
+
 function leerMemoria() {
   database.ref("memorias").on("value", (snapshot) => {
     memoria = snapshot.val();
     memoria_array = Object.values(memoria);
-    memoria_elegida =
-      memoria_array[Math.floor(Math.random() * memoria_array.length)];
-    return memoria_elegida;
+    for (let i = memoria_array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [memoria_array[i], memoria_array[j]] = [
+        memoria_array[j],
+        memoria_array[i],
+      ];
+    }
+
+    memoria_elegida = memoria_array[1];
+    memoria_elegida2 = memoria_array[2];
+    memoria_elegida3 = memoria_array[3];
+    //return memoria_elegida;
   });
 }
+
+//let numero_azaroso = Math.floor(Math.random() * memoria_array.length - 2)
 
 function leerDia() {
   database.ref("dia").on("value", (snapshot) => {
@@ -29,7 +49,7 @@ function leerAño() {
 }
 
 function textoTermino() {
-  estaHablando = false;
+  texto_termino = true;
 }
 
 function textoEmpezo() {
@@ -64,60 +84,99 @@ function convertirMesEnPalabra(mes_numero) {
   }
 }
 
+function pedirConfirmacion() {
+  if (creacion_boton == true) {
+    boton_confirmar = createButton("Pude contarla");
+    boton_confirmar.position(50, 200);
+    boton_volver_a_grabar = createButton("Volver a contarla");
+    boton_volver_a_grabar.position(200, 200);
+    creacion_boton = false;
+  }
+  boton_confirmar.mousePressed(() => {
+    grabarResultado();
+  });
+
+  boton_volver_a_grabar.mousePressed(() => {
+    texto_escuchado = false;
+    estaHablando = true;
+    esta_grabando = false;
+    boton_confirmar.remove();
+    boton_volver_a_grabar.remove();
+    creacion_boton = true;
+    texto_termino = false; 
+    estado = 8;
+  });
+}
+
 function grabarResultado() {
-  database.ref("memorias").push(rec.resultString);
+  database.ref("memorias").push(memoria_contada);
   grabado = true;
-  memoria_contada = rec.resultString; 
-  agregarVida(); 
+  agregarVida();
 }
 
 function estaGrabando() {
   esta_grabando = true;
 }
 
+function textoEscuchado() {
+  texto_escuchado = true;
+  memoria_contada = rec.resultString;
+}
+
 function agregarVida() {
-  if (mes_numero == 1 || mes_numero == 3 || mes_numero == 5 || mes_numero == 7 || mes_numero == 8 || mes_numero == 10) {
+  if (
+    mes_numero == 1 ||
+    mes_numero == 3 ||
+    mes_numero == 5 ||
+    mes_numero == 7 ||
+    mes_numero == 8 ||
+    mes_numero == 10
+  ) {
     if (dia < 31) {
       nuevo_dia = dia + 1;
-      database.ref('dia').set(nuevo_dia);
+      database.ref("dia").set(nuevo_dia);
     } else {
       nuevo_dia = 1;
       nuevo_mes = mes_numero + 1;
-      database.ref('dia').set(nuevo_dia);
-      database.ref('mes').set(nuevo_mes);
+      database.ref("dia").set(nuevo_dia);
+      database.ref("mes").set(nuevo_mes);
     }
-  } else if (mes_numero == 4 || mes_numero == 6 || mes_numero == 9 || mes_numero == 11) {
+  } else if (
+    mes_numero == 4 ||
+    mes_numero == 6 ||
+    mes_numero == 9 ||
+    mes_numero == 11
+  ) {
     if (dia < 30) {
       nuevo_dia = dia + 1;
-      database.ref('dia').set(nuevo_dia);
+      database.ref("dia").set(nuevo_dia);
     } else {
       nuevo_dia = 1;
       nuevo_mes = mes_numero + 1;
-      database.ref('dia').set(nuevo_dia);
-      database.ref('mes').set(nuevo_mes);
+      database.ref("dia").set(nuevo_dia);
+      database.ref("mes").set(nuevo_mes);
     }
   } else if (mes_numero == 2) {
     if (dia < 28) {
       nuevo_dia = dia + 1;
-      database.ref('dia').set(nuevo_dia);
-      
+      database.ref("dia").set(nuevo_dia);
     } else {
       nuevo_dia = 1;
       nuevo_mes = mes_numero + 1;
-      database.ref('dia').set(nuevo_dia);
-      database.ref('mes').set(nuevo_mes);
+      database.ref("dia").set(nuevo_dia);
+      database.ref("mes").set(nuevo_mes);
     }
   } else if (mes_numero == 12) {
     if (dia < 31) {
       nuevo_dia = dia + 1;
-      database.ref('dia').set(nuevo_dia);
+      database.ref("dia").set(nuevo_dia);
     } else {
       nuevo_dia = 1;
       nuevo_mes = 1;
       nuevo_año = año + 1;
-      database.ref('dia').set(nuevo_dia);
-      database.ref('mes').set(nuevo_mes);
-      database.ref('año').set(nuevo_año);
+      database.ref("dia").set(nuevo_dia);
+      database.ref("mes").set(nuevo_mes);
+      database.ref("año").set(nuevo_año);
     }
   }
 }
