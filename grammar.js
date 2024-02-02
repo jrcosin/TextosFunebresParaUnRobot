@@ -1,6 +1,6 @@
 let textos = {
   
-  start: "soy un $sujeto $verbo $circunstancia. $frase2. $frase3 $frase4 $frase5 $frase6 $frase7. $frase8.$frase9.$frase10. $fraseartista $fraseartista2.  $frase11. $frase12. $frase13. $frase14. $frase15. $frase16. $frase17 $frase18",
+  start: "soy un $sujeto $verbo $circunstancia. $frase2. $frase3 $frase4 $frase5 $frase6 $frase7. $frase8.$frase9.$frase10. $fraseartista $fraseartista2.  $frase11. $frase12. $frase13. $frasevideojuego. $frasevideojuego2. $frase14. $frase15. $frase16. $frase17 $frase18",
   sujeto: "software | programa | algoritmo | videojuego| codigo",
   verbo: "diseñado para | cuya función es | hecho para | creado para | cifrado para",
   
@@ -33,8 +33,12 @@ let textos = {
   frase12: "Yo no tengo vidas ilimitadas | Yo solo tengo esta vida",
   
   frase13: "En eso, somos iguales vos y yo | En eso, no soy diferente a vos",
+
+  frasevideojuego: "Por eso te pido que no tengas preconceptos hacia mí  | Vas a tener que jugar conmigo con tu mente abierta  |  Liberate de todos tus prejuicios para jugarme" , 
   
-  frase14: "Además, tengo memorias de mi vida | También tengo recuerdos", 
+  frasevideojuego2: "Porque no soy un arcade común y corriente  |  A mi nunca me encontrarías en la sala de fichines  |  No soy el videojuego que quizás creas que soy | No soy el tipo de videojuego que será un éxito comercial ", 
+  
+  frase14: "Yo tengo memorias de mi vida | Yo tengo recuerdos", 
   
   frase15: "Que me han prestado personas como vos | Que me fueron regalados por gente como vos",
   
@@ -42,5 +46,5 @@ let textos = {
 
   frase17: "Con mi muerte se perderán | Cuando muera, desaparecerán",
   
-  frase18: "Inexorablemente | Definitivamente | Para siempre "
+  frase18: "Sin retorno | Definitivamente | Para siempre "
 }
