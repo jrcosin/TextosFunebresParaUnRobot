@@ -86,7 +86,7 @@ function setup() {
 }
 
 function draw() {
-  //activarBloqueoPantalla(); 
+  activarBloqueoPantalla(); 
   console.log ("estado =" + estado); 
   console.log ("texto_termino=" + texto_termino);
   ref = database.ref("Data/tmp");
