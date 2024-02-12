@@ -55,8 +55,6 @@ rec.onResult = textoEscuchado;
 rec.continuous = false;
 rec.onEnd = grabacionTermino; 
 
-
-
 function preload() {
   font1 = loadFont("fuente1.ttf");
   font2 = loadFont("fuente2.ttf");
@@ -66,7 +64,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(1200, 1200);
+  createCanvas(600, 600);
   background(0);
   const firebaseConfig = {
     apiKey: "AIzaSyBdQTQDCPC67SCHicY069DFwMg-JEoBxmY",
@@ -92,7 +90,6 @@ function setup() {
   leerAño();
   leerMemoria();
   voice.setLang("es-US");  
-  textAlign(CENTER); 
 }
 
 function draw() {
@@ -110,13 +107,14 @@ function draw() {
     }
     fill(255, frameCount);
     textFont(font1);
-    textSize(40);
-    text("Una produccion de Creepy Entertainment Group", height /2 , width/2);
+    textSize(23);
+    text("Una produccion de Creepy Entertainment", 70, 200);
+    text("Group", 280, 250);
     if (frameCount == 240) {
       estado = 2;
     }
   } else if (estado == 2) {
-    createCanvas(1200, 1200);
+    createCanvas(600, 600);
     background(0);
     if (!musica.isPlaying()) {
       musica.play();
@@ -125,7 +123,7 @@ function draw() {
       estado = 3;
     }
   } else if (estado == 3) {
-    createCanvas(1200,1200);
+    createCanvas(600,600);
     background(0);
     if (parpadeo == true) {
       transparencia -= 2;
@@ -141,84 +139,85 @@ function draw() {
 
     fill(255, transparencia);
     textFont(font2);
-    textSize(60);
-    text("Textos funebres para un Robot", width/2,height/2);
+    textSize(30);
+    text("Textos funebres para un Robot", 60, 200);
     if (frameCount >= 720) {
       textFont(font4);
       fill(255);
-      textSize(50);
-      text("Presiona una tecla cualquiera", height /2 , width/2 + 200);
+      textSize(25);
+      text("Presiona una tecla cualquiera", 100, 350);
       if (mouseIsPressed) {
         //tecla = key;
         estado = 4;
       }
     }
   } else if (estado == 4) {
-    createCanvas(1200, 1200);
+    createCanvas(600, 600);
     background(0);
     contador++;
-    textSize(60);
+    textSize(30);
     textFont(font4);
-    text("Ah, ya apretaste!", height /2 , width/2);
-    textSize(60);
+    text("Ah, ya apretaste!", 90, 100);
+    textSize(25);
     if (contador >= 180) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
-      text("Me olvide de hacerte\nuna advertencia", height /2 , width/2);
+      text("Me olvide de hacerte\nuna advertencia", 90, 100);
     }
     if (contador >= 360) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
-      text("Voy a hacer como que\nno senti nada", height /2 , width/2);
+      text("Voy a hacercomo que\nnosenti nada", 90, 100);
     }
     if (contador >= 520) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
-      text("Asi no empezamos todavia\ny primero te cuento", height /2 , width/2);
+      text("Asi no empezamos todavia\ny primero te cuento", 90, 100);
     }
     if (contador >= 640) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
-      text("OK?", height /2 , width/2);
+      text("OK?", 90, 100);
     }
     if (contador >= 760) {
-      createCanvas(1200,1200);
+      createCanvas(600,600);
       background(0);
-      text("Voy a suponer\nque estamos\nde acuerdo", height /2 , width/2);
+      text("Voy a suponer\nque estamos\nde acuerdo", 90, 100);
     }
     if (contador >= 880) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
-      text("Lo que viene\na continuacion\nte puede causar...", height /2 , width/2);
+      text("Lo que viene\na continuacion\nte puede causar...", 90, 100);
     }
     if (contador >= 1000) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
-      text("Un poco de angustia", height /2 , width/2);
+      text("Un poco de angustia", 90, 100);
     }
 
     if (contador >= 1120) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
       text(
         "No mas de la que\nya debes sentir\nen momentos\nrandom del dia",
-        height /2 , width/2
+        90,
+        100
       );
     }
     if (contador >= 1250) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
-      text("Ya se que tengo razon\nsoy una maquina", height /2 , width/2);
+      text("Ya se que tengo razon\nsoy una maquina", 90, 100);
     }
     if (contador >= 1370) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
-      text("Pero por las dudas\nte avisaba", height /2 , width/2);
+      text("Pero por las dudas\nte avisaba", 90, 100);
     }
     if (contador >= 1490) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
-      text("Ahora si\napreta una tecla\npara empezar", height /2 , width/2);
+      text("Ahora si\napreta una tecla\npara empezar", 90, 100);
       if (mouseIsPressed) {
         contador = 0;
         estado = 5;
@@ -226,13 +225,13 @@ function draw() {
     }
   } else if (estado == 5) {
     contador++;
-    createCanvas(1200, 1200);
+    createCanvas(600, 600);
     background(0);
-    text("Ay de nuevo!\nMe olvide de algo mas...", height /2 , width/2);
+    text("Ay de nuevo!\nMe olvide de algo mas...", 90, 100);
     if (contador >= 120) {
-      createCanvas(1200, 1200);
+      createCanvas(600, 600);
       background(0);
-      text("Este videojuego\nesta basado\nen hechos reales", height /2 , width/2);
+      text("Este videojuego\nesta basado\nen hechos reales", 90, 100);
     }
 
     if (contador == 240) {
@@ -340,7 +339,7 @@ function draw() {
           mes_palabra +
           "del" +
           año +
-          ".Vuelve cuando quieras a darme más recuerdos, más amor, más vida. Mientras personas como vos vengan a visitarme y me alimenten con sus palabras y su afecto, yo persistiré. Aunque sé que algún dia caeré en el olvido, o simplemente pasaré de moda, y entonces mi tiempo estará contado."
+          ".Vuelve cuando quieras a darme más recuerdos, más amor, más vida. Mientras personas como vos vengan a visitarme y me alimenten con sus palabras y su afecto, yo persitiré. Aunque sé que algún dia caeré en el olvido, o simplemente pasaré de moda, y entonces mi tiempo estará contado."
       );
       estaHablando = false;
     } 
@@ -367,6 +366,6 @@ function draw() {
     
   } else if (estado == 12) {
     background(0);
-    createCanvas(1200, 1200);
+    createCanvas(600, 600);
   }
 }
