@@ -2,6 +2,7 @@ let i = 20;
 let font1;
 let font2; 
 let font3; 
+let font4; 
 let parpadeo;
 let transparencia = 20;
 let musica;
@@ -28,20 +29,23 @@ let memoria_elegida_3;
 let memoria_array = [];
 let grabado = false;
 let esta_grabando = false;
+let grabacion_termino = false;
 let texto_escuchado = false; 
+let escucha_fallo = false; 
 let nuevo_dia;
 let nuevo_mes;
 let nuevo_año;
 let memoria_contada;
 let fondo = true; 
-let fondo1= true; 
-let fondo2= true; 
-let fondo3 = true; 
+//let fondo1= true; 
+//let fondo2= true; 
+//let fondo3 = true; 
 let boton_confirmar; 
 let boton_volver_a_grabar;
 let creacion_boton = true; 
 let texto_termino = false; 
 let wakeLock = null;
+
 
 voice = new p5.Speech();
 //voice.onStart = textoEmpezo;
@@ -49,16 +53,20 @@ voice.onEnd = textoTermino;
 rec = new p5.SpeechRec();
 rec.onResult = textoEscuchado; 
 rec.continuous = false;
+rec.onEnd = grabacionTermino; 
+
+
 
 function preload() {
   font1 = loadFont("fuente1.ttf");
   font2 = loadFont("fuente2.ttf");
   font3 = loadFont("fuente3.ttf");
+  font4 = loadFont ("fuente4.ttf");
   musica = loadSound("musicaranchos.mp3");
 }
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(1200, 1200);
   background(0);
   const firebaseConfig = {
     apiKey: "AIzaSyBdQTQDCPC67SCHicY069DFwMg-JEoBxmY",
@@ -83,12 +91,13 @@ function setup() {
   leerMes();
   leerAño();
   leerMemoria();
+  voice.setLang("es-US");  
+  textAlign(CENTER); 
 }
 
 function draw() {
-  activarBloqueoPantalla(); 
-  console.log ("estado =" + estado); 
-  console.log ("texto_termino=" + texto_termino);
+  //activarBloqueoPantalla(); Esto hay que activarlo en gitHub
+
   ref = database.ref("Data/tmp");
   // Attach an asynchronous callback to read the data at our posts reference
   ref.on("value", function (snapshot) {
@@ -101,14 +110,13 @@ function draw() {
     }
     fill(255, frameCount);
     textFont(font1);
-    textSize(23);
-    text("Una produccion de Creepy Entertainment", 70, 200);
-    text("Group", 280, 250);
+    textSize(40);
+    text("Una produccion de Creepy Entertainment Group", height /2 , width/2);
     if (frameCount == 240) {
       estado = 2;
     }
   } else if (estado == 2) {
-    createCanvas(600, 600);
+    createCanvas(1200, 1200);
     background(0);
     if (!musica.isPlaying()) {
       musica.play();
@@ -117,7 +125,7 @@ function draw() {
       estado = 3;
     }
   } else if (estado == 3) {
-    createCanvas(600,600);
+    createCanvas(1200,1200);
     background(0);
     if (parpadeo == true) {
       transparencia -= 2;
@@ -133,85 +141,84 @@ function draw() {
 
     fill(255, transparencia);
     textFont(font2);
-    textSize(30);
-    text("Textos funebres para un Robot", 70, 200);
+    textSize(60);
+    text("Textos funebres para un Robot", width/2,height/2);
     if (frameCount >= 720) {
-      textFont(font3);
+      textFont(font4);
       fill(255);
-      textSize(30);
-      text("Presiona una tecla cualquiera", 80, 350);
+      textSize(50);
+      text("Presiona una tecla cualquiera", height /2 , width/2 + 200);
       if (mouseIsPressed) {
         //tecla = key;
         estado = 4;
       }
     }
   } else if (estado == 4) {
-    createCanvas(600, 600);
+    createCanvas(1200, 1200);
     background(0);
     contador++;
-    textSize(30);
-    textFont(font3);
-    text("Ah, ya apretaste!", 90, 100);
-    textSize(30);
+    textSize(60);
+    textFont(font4);
+    text("Ah, ya apretaste!", height /2 , width/2);
+    textSize(60);
     if (contador >= 180) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
-      text("Me olvidé de hacerte\nuna advertencia", 90, 100);
+      text("Me olvide de hacerte\nuna advertencia", height /2 , width/2);
     }
     if (contador >= 360) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
-      text("Voy a hacer\ncomo que no\nsentí nada", 90, 100);
+      text("Voy a hacer como que\nno senti nada", height /2 , width/2);
     }
     if (contador >= 520) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
-      text("Así no empezamos todavia\ny primero\nte cuento", 90, 100);
+      text("Asi no empezamos todavia\ny primero te cuento", height /2 , width/2);
     }
     if (contador >= 640) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
-      text("OK?", 90, 100);
+      text("OK?", height /2 , width/2);
     }
     if (contador >= 760) {
-      createCanvas(600,600);
+      createCanvas(1200,1200);
       background(0);
-      text("Voy a suponer\nque estamos\nde acuerdo", 90, 100);
+      text("Voy a suponer\nque estamos\nde acuerdo", height /2 , width/2);
     }
     if (contador >= 880) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
-      text("Lo que viene\na continuación\nte puede causar...", 90, 100);
+      text("Lo que viene\na continuacion\nte puede causar...", height /2 , width/2);
     }
     if (contador >= 1000) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
-      text("Un poco de angustia", 90, 100);
+      text("Un poco de angustia", height /2 , width/2);
     }
 
     if (contador >= 1120) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
       text(
-        "No más de la que\nya debés sentir\nen momentos\nrandom del dia",
-        90,
-        100
+        "No mas de la que\nya debes sentir\nen momentos\nrandom del dia",
+        height /2 , width/2
       );
     }
     if (contador >= 1250) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
-      text("Ya sé que tengo razón\nsoy una máquina", 90, 100);
+      text("Ya se que tengo razon\nsoy una maquina", height /2 , width/2);
     }
     if (contador >= 1370) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
-      text("Pero por las dudas\nte avisaba", 90, 100);
+      text("Pero por las dudas\nte avisaba", height /2 , width/2);
     }
     if (contador >= 1490) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
-      text("Ahora sí\napretá una tecla\npara empezar", 90, 100);
+      text("Ahora si\napreta una tecla\npara empezar", height /2 , width/2);
       if (mouseIsPressed) {
         contador = 0;
         estado = 5;
@@ -219,13 +226,13 @@ function draw() {
     }
   } else if (estado == 5) {
     contador++;
-    createCanvas(600, 600);
+    createCanvas(1200, 1200);
     background(0);
-    text("Ay de nuevo!\nMe olvidé de algo mas...", 90, 100);
+    text("Ay de nuevo!\nMe olvide de algo mas...", height /2 , width/2);
     if (contador >= 120) {
-      createCanvas(600, 600);
+      createCanvas(1200, 1200);
       background(0);
-      text("Este videojuego\nestá basado\nen hechos reales", 90, 100);
+      text("Este videojuego\nesta basado\nen hechos reales", height /2 , width/2);
     }
 
     if (contador == 240) {
@@ -246,9 +253,6 @@ function draw() {
       estado = 7;
     }
   } else if (estado == 7) {
-    //if (fondo3 == true) {
-      //background(0);
-      //fondo3 = false;}
     for (let i = 0; i < fragments.length; i++) {
       fragments[i].move();
       fragments[i].display();
@@ -272,7 +276,7 @@ function draw() {
           mes_palabra +
           "del" +
           año +
-          "La repito para poder entender, aunque no lo logre. Por eso te pido que me ayudes, y me regales un recuerdo. Pensá en algo importante o significativo que hayas vivido. Puede ser un hecho relevante, o un detalle, o una sensación. Pensalo empezando con la frase una vez. Una vez. Una vez. Contamelo en voz alta y clara. No tengas timidez. Yo te voy a escuchar. Cuando ya lo hayas pensado, apretá una tecla"
+          "La repito para poder entender, aunque no lo logre. Por eso te pido que me ayudes, y me regales un recuerdo. Pensá en algo importante o significativo que hayas vivido. Puede ser un hecho relevante, o un detalle, o una sensación. Pensalo empezando con la frase una vez. Una vez. Una vez. Contamelo en voz alta y clara, sin prisa pero sin pausa. No tengas timidez. Yo te voy a escuchar. Cuando lo hayas pensado, apretá una tecla"
       );
       estaHablando = false;
     }
@@ -282,9 +286,6 @@ function draw() {
       estado = 8;
     }
   } else if (estado == 8) {
-    //if (fondo1 == true) {
-      //background(0);
-      //fondo1 = false;}
     for (let i = 0; i < fragments.length; i++) {
       fragments[i].move();
       fragments[i].display();
@@ -296,8 +297,12 @@ function draw() {
     }
     if (texto_escuchado == true) {
       estaHablando = true;
+      texto_termino = false; 
       estado = 9;
     }
+    else if (grabacion_termino == true && texto_escuchado == false) {texto_termino = false; estaHablando = true; esta_grabando = false; grabacion_termino = false;}
+    
+  
   }
     else if (estado == 9) {
       for (let i = 0; i < fragments.length; i++) {
@@ -305,9 +310,10 @@ function draw() {
       fragments[i].display();
     }
       if (estaHablando == true) {
-    voice.speak ("¿Pudiste contarme tu memoria?. ¿O querés volver a hacerlo?");
-      estaHablando = false;}
-    pedirConfirmacion();
+    voice.speak ("¿Pudiste contarme tu memoria?. ¿O querés volver a hacerlo?");   
+    estaHablando = false;}
+    if (texto_termino == true) {pedirConfirmacion();}    
+  
       if (grabado == true) {
         estaHablando = true; 
         texto_termino = false; 
@@ -315,9 +321,6 @@ function draw() {
       }
   
   } else if (estado == 10) {
-    //if (fondo2 == true) {
-      //background(0);
-      //fondo2 = false;}
     for (let i = 0; i < fragments.length; i++) {
       fragments[i].move();
       fragments[i].display();
@@ -337,7 +340,7 @@ function draw() {
           mes_palabra +
           "del" +
           año +
-          ".Vuelve cuando quieras a darme más recuerdos, más amor, más vida"
+          ".Vuelve cuando quieras a darme más recuerdos, más amor, más vida. Mientras personas como vos vengan a visitarme y me alimenten con sus palabras y su afecto, yo persitiré. Aunque sé que algún dia caeré en el olvido, o simplemente pasaré de moda, y entonces mi tiempo estará contado."
       );
       estaHablando = false;
     } 
@@ -364,6 +367,6 @@ function draw() {
     
   } else if (estado == 12) {
     background(0);
-    createCanvas(600, 600);
+    createCanvas(1200, 1200);
   }
 }
