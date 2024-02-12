@@ -34,6 +34,7 @@ function leerDia() {
     return dia;
   });
 }
+
 function leerMes() {
   database.ref("mes").on("value", (snapshot) => {
     mes_numero = snapshot.val();
@@ -87,9 +88,13 @@ function convertirMesEnPalabra(mes_numero) {
 function pedirConfirmacion() {
   if (creacion_boton == true) {
     boton_confirmar = createButton("Pude contarla");
-    boton_confirmar.position(50, 200);
+    boton_confirmar.position(100, 200);
+    boton_confirmar.size (130, 90);
+    boton_confirmar.style("font-size", "25px");
     boton_volver_a_grabar = createButton("Volver a contarla");
-    boton_volver_a_grabar.position(200, 200);
+    boton_volver_a_grabar.position(370, 200);
+    boton_volver_a_grabar.size(130, 90);
+    boton_volver_a_grabar.style("font-size", "25px");
     creacion_boton = false;
   }
   boton_confirmar.mousePressed(() => {
@@ -98,12 +103,13 @@ function pedirConfirmacion() {
 
   boton_volver_a_grabar.mousePressed(() => {
     texto_escuchado = false;
-    estaHablando = true;
     esta_grabando = false;
     boton_confirmar.remove();
     boton_volver_a_grabar.remove();
     creacion_boton = true;
     texto_termino = false; 
+    estaHablando = true;
+    grabacion_termino = false; 
     estado = 8;
   });
 }
@@ -111,6 +117,7 @@ function pedirConfirmacion() {
 function grabarResultado() {
   database.ref("memorias").push(memoria_contada);
   grabado = true;
+  texto_termino = false; 
   agregarVida();
 }
 
@@ -121,6 +128,7 @@ function estaGrabando() {
 function textoEscuchado() {
   texto_escuchado = true;
   memoria_contada = rec.resultString;
+  //console.log ("Texto escuchado: " + texto_escuchado)
 }
 
 function agregarVida() {
@@ -179,4 +187,8 @@ function agregarVida() {
       database.ref("año").set(nuevo_año);
     }
   }
+}
+ 
+function grabacionTermino(){
+  grabacion_termino = true; 
 }
