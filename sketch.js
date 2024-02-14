@@ -93,7 +93,7 @@ function setup() {
 }
 
 function draw() {
-activarBloqueoPantalla(); Esto hay que activarlo en gitHub
+activarBloqueoPantalla(); //Esto hay que activarlo en gitHub
 
   ref = database.ref("Data/tmp");
   // Attach an asynchronous callback to read the data at our posts reference
