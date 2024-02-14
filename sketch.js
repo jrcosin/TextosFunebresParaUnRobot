@@ -93,7 +93,7 @@ function setup() {
 }
 
 function draw() {
-  //activarBloqueoPantalla(); Esto hay que activarlo en gitHub
+activarBloqueoPantalla(); Esto hay que activarlo en gitHub
 
   ref = database.ref("Data/tmp");
   // Attach an asynchronous callback to read the data at our posts reference
@@ -339,7 +339,7 @@ function draw() {
           mes_palabra +
           "del" +
           año +
-          ".Vuelve cuando quieras a darme más recuerdos, más amor, más vida. Mientras personas como vos vengan a visitarme y me alimenten con sus palabras y su afecto, yo persitiré. Aunque sé que algún dia caeré en el olvido, o simplemente pasaré de moda, y entonces mi tiempo estará contado."
+          ".Vuelve cuando quieras a darme más recuerdos, más amor, más vida. Mientras personas como vos vengan a visitarme y me alimenten con sus palabras y su afecto, yo persistiré. Aunque sé que algún dia caeré en el olvido, o simplemente pasaré de moda, y entonces mi tiempo estará contado."
       );
       estaHablando = false;
     } 
