@@ -59,7 +59,7 @@ function preload() {
   font1 = loadFont("fuente1.ttf");
   font2 = loadFont("fuente2.ttf");
   font3 = loadFont("fuente3.ttf");
-  font4 = loadFont ("fuente4.ttf");
+  font4 = loadFont ("font4.ttf");
   musica = loadSound("musicaranchos.mp3");
 }
 
