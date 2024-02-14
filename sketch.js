@@ -166,7 +166,7 @@ activarBloqueoPantalla(); //Esto hay que activarlo en gitHub
     if (contador >= 360) {
       createCanvas(600, 600);
       background(0);
-      text("Voy a hacercomo que\nnosenti nada", 90, 100);
+      text("Voy a hacer como que\nno senti nada", 90, 100);
     }
     if (contador >= 520) {
       createCanvas(600, 600);
