@@ -146,8 +146,7 @@ activarBloqueoPantalla(); Esto hay que activarlo en gitHub
       fill(255);
       textSize(25);
       text("Presiona una tecla cualquiera", 100, 350);
-      if (mouseIsPressed) {
-        //tecla = key;
+      if (mouseIsPressed || keyIsPressed) {
         estado = 4;
       }
     }
@@ -218,7 +217,7 @@ activarBloqueoPantalla(); Esto hay que activarlo en gitHub
       createCanvas(600, 600);
       background(0);
       text("Ahora si\napreta una tecla\npara empezar", 90, 100);
-      if (mouseIsPressed) {
+      if (mouseIsPressed || keyIsPressed) {
         contador = 0;
         estado = 5;
       }
@@ -279,7 +278,7 @@ activarBloqueoPantalla(); Esto hay que activarlo en gitHub
       );
       estaHablando = false;
     }
-    if (mouseIsPressed && texto_termino == true) {
+    if ((mouseIsPressed || keyIsPressed) && texto_termino == true) {
       texto_termino = false; 
       estaHablando = true; 
       estado = 8;
