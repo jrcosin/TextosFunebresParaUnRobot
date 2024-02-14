@@ -59,7 +59,7 @@ function preload() {
   font1 = loadFont("fuente1.ttf");
   font2 = loadFont("fuente2.ttf");
   font3 = loadFont("fuente3.ttf");
-  font4 = loadFont ("font4.ttf");
+  font4 = loadFont ("fuente4.ttf");
   musica = loadSound("musicaranchos.mp3");
 }
 
@@ -93,7 +93,7 @@ function setup() {
 }
 
 function draw() {
-  activarBloqueoPantalla(); Esto hay que activarlo en gitHub
+  //activarBloqueoPantalla(); Esto hay que activarlo en gitHub
 
   ref = database.ref("Data/tmp");
   // Attach an asynchronous callback to read the data at our posts reference
