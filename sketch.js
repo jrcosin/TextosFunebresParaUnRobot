@@ -85,7 +85,7 @@ function setup() {
   leerAño();
   leerMemoria();
   voice.setLang("es-US"); 
-  rec.default_language("es-US");
+  //rec.default_language("es-US");
     
 }
 
