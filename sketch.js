@@ -363,6 +363,6 @@ activarBloqueoPantalla();
   } else if (estado == 12) {
     background(0);
     createCanvas(600, 600);
-    morir();   
+    //morir();   
   }
 }
