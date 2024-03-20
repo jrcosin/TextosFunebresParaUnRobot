@@ -193,7 +193,7 @@ function grabacionTermino(){
   grabacion_termino = true; 
 }
 
-/*function morir(){
+function morir(){
   // Obtener una referencia a la categoría que deseas borrar
   referenciaCategoria = database.ref("memorias");
 
@@ -208,4 +208,4 @@ function grabacionTermino(){
   }).catch(function(error) {
     console.error("Error borrando elementos:", error);
   });
-} */
+} 
