@@ -192,3 +192,20 @@ function agregarVida() {
 function grabacionTermino(){
   grabacion_termino = true; 
 }
+
+function morir() {
+  // Obtener una referencia a la categoría que deseas borrar
+  var referenciaCategoria = database.ref("memorias");
+
+  // Obtener una vez los datos de la categoría
+  referenciaCategoria.once("value", function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      // Borrar cada elemento de la categoría
+      referenciaCategoria.child(childSnapshot.key).remove();
+    });
+  }).then(function() {
+    console.log("Aquí yace el robot");
+  }).catch(function(error) {
+    console.error("Error borrando elementos:", error);
+  });
+}

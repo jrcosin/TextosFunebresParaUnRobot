@@ -7,16 +7,13 @@ let parpadeo;
 let transparencia = 20;
 let musica;
 let estado = 1;
-//let tecla;
 let contador = 0;
 let fragments = [];
 let voice;
 let rec;
 let grammar;
-//let json;
 let database;
 let ref;
-//let firetore;
 let dia;
 let mes_numero;
 let mes_palabra;
@@ -37,9 +34,6 @@ let nuevo_mes;
 let nuevo_año;
 let memoria_contada;
 let fondo = true; 
-//let fondo1= true; 
-//let fondo2= true; 
-//let fondo3 = true; 
 let boton_confirmar; 
 let boton_volver_a_grabar;
 let creacion_boton = true; 
@@ -89,11 +83,13 @@ function setup() {
   leerMes();
   leerAño();
   leerMemoria();
-  voice.setLang("es-US");  
+  voice.setLang("es-US"); 
+  rec.default_language("es-US");
+    
 }
 
 function draw() {
-activarBloqueoPantalla(); //Esto hay que activarlo en gitHub
+activarBloqueoPantalla(); 
 
   ref = database.ref("Data/tmp");
   // Attach an asynchronous callback to read the data at our posts reference
@@ -145,7 +141,7 @@ activarBloqueoPantalla(); //Esto hay que activarlo en gitHub
       textFont(font4);
       fill(255);
       textSize(25);
-      text("Presiona una tecla cualquiera", 100, 350);
+      text("Presionate una tecla cualquiera", 100, 350);
       if (mouseIsPressed || keyIsPressed) {
         estado = 4;
       }
@@ -163,38 +159,38 @@ activarBloqueoPantalla(); //Esto hay que activarlo en gitHub
       background(0);
       text("Me olvide de hacerte\nuna advertencia", 90, 100);
     }
-    if (contador >= 360) {
+    if (contador >= 420) {
       createCanvas(600, 600);
       background(0);
       text("Voy a hacer como que\nno senti nada", 90, 100);
     }
-    if (contador >= 520) {
+    if (contador >= 640) {
       createCanvas(600, 600);
       background(0);
       text("Asi no empezamos todavia\ny primero te cuento", 90, 100);
     }
-    if (contador >= 640) {
+    if (contador >= 820) {
       createCanvas(600, 600);
       background(0);
       text("OK?", 90, 100);
     }
-    if (contador >= 760) {
+    if (contador >= 1000) {
       createCanvas(600,600);
       background(0);
       text("Voy a suponer\nque estamos\nde acuerdo", 90, 100);
     }
-    if (contador >= 880) {
+    if (contador >= 1160) {
       createCanvas(600, 600);
       background(0);
       text("Lo que viene\na continuacion\nte puede causar...", 90, 100);
     }
-    if (contador >= 1000) {
+    if (contador >= 1360) {
       createCanvas(600, 600);
       background(0);
       text("Un poco de angustia", 90, 100);
     }
 
-    if (contador >= 1120) {
+    if (contador >= 1480) {
       createCanvas(600, 600);
       background(0);
       text(
@@ -203,17 +199,17 @@ activarBloqueoPantalla(); //Esto hay que activarlo en gitHub
         100
       );
     }
-    if (contador >= 1250) {
+    if (contador >= 1660) {
       createCanvas(600, 600);
       background(0);
       text("Ya se que tengo razon\nsoy una maquina", 90, 100);
     }
-    if (contador >= 1370) {
+    if (contador >= 1810) {
       createCanvas(600, 600);
       background(0);
       text("Pero por las dudas\nte avisaba", 90, 100);
     }
-    if (contador >= 1490) {
+    if (contador >= 1960) {
       createCanvas(600, 600);
       background(0);
       text("Ahora si\napreta una tecla\npara empezar", 90, 100);
@@ -227,13 +223,13 @@ activarBloqueoPantalla(); //Esto hay que activarlo en gitHub
     createCanvas(600, 600);
     background(0);
     text("Ay de nuevo!\nMe olvide de algo mas...", 90, 100);
-    if (contador >= 120) {
+    if (contador >= 180) {
       createCanvas(600, 600);
       background(0);
       text("Este videojuego\nesta basado\nen hechos reales", 90, 100);
     }
 
-    if (contador == 240) {
+    if (contador == 360) {
       contador = 0;
       estado = 6;
     }
@@ -366,5 +362,6 @@ activarBloqueoPantalla(); //Esto hay que activarlo en gitHub
   } else if (estado == 12) {
     background(0);
     createCanvas(600, 600);
+    morir();   
   }
 }
