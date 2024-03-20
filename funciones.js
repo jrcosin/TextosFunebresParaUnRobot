@@ -195,7 +195,7 @@ function grabacionTermino(){
 
 function morir() {
   // Obtener una referencia a la categoría que deseas borrar
-  var referenciaCategoria = database.ref("memorias");
+  referenciaCategoria = database.ref("memorias");
 
   // Obtener una vez los datos de la categoría
   referenciaCategoria.once("value", function(snapshot) {

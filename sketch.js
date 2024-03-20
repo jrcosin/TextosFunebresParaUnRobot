@@ -39,6 +39,7 @@ let boton_volver_a_grabar;
 let creacion_boton = true; 
 let texto_termino = false; 
 let wakeLock = null;
+let referenciaCategoria; 
 
 
 voice = new p5.Speech();
