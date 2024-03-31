@@ -113,9 +113,6 @@ activarBloqueoPantalla();
   } else if (estado == 2) {
     createCanvas(600, 600);
     background(0);
-    if (!musica.isPlaying()) {
-      musica.play();
-    }
     if (frameCount == 400) {
       estado = 3;
     }
@@ -144,6 +141,9 @@ activarBloqueoPantalla();
       textSize(25);
       text("Presionate una tecla cualquiera", 100, 350);
       if (mouseIsPressed || keyIsPressed) {
+      if (!musica.isPlaying()) {
+      musica.play();
+    }  
         estado = 4;
       }
     }
