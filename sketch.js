@@ -40,7 +40,6 @@ let creacion_boton = true;
 let texto_termino = false; 
 let wakeLock = null;
 let referenciaCategoria; 
-let canvas = true; 
 
 
 voice = new p5.Speech();
@@ -60,7 +59,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windoHeight);
+  createCanvas(600, 600);
   background(0);
   const firebaseConfig = {
     apiKey: "AIzaSyBdQTQDCPC67SCHicY069DFwMg-JEoBxmY",
@@ -112,18 +111,13 @@ activarBloqueoPantalla();
       estado = 2;
     }
   } else if (estado == 2) {
-    if (canvas == true)
-    {createCanvas(windowWidth, windowHeight);
-    canvas = false;}
+    createCanvas(600, 600);
     background(0);
     if (frameCount == 400) {
-    canvas = true;     
-    estado = 3;
+      estado = 3;
     }
   } else if (estado == 3) {
-    if (canvas == true){  
-    createCanvas(windowWidth, windowHeight);
-    canvas = false;}
+    createCanvas(600,600);
     background(0);
     if (parpadeo == true) {
       transparencia -= 2;
@@ -149,15 +143,12 @@ activarBloqueoPantalla();
       if (mouseIsPressed || keyIsPressed) {
       if (!musica.isPlaying()) {
       musica.play();
-    }   canvas = true; 
+    }  
         estado = 4;
-          
       }
     }
   } else if (estado == 4) {
-    if (canvas == true) {  
-    createCanvas(6windowWidth, windowHeight);
-    canvas = false;}
+    createCanvas(600, 600);
     background(0);
     contador++;
     textSize(30);
