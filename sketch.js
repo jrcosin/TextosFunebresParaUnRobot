@@ -59,7 +59,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(windowWidth , windowHeight);
   background(0);
   const firebaseConfig = {
     apiKey: "AIzaSyBdQTQDCPC67SCHicY069DFwMg-JEoBxmY",
@@ -75,7 +75,7 @@ function setup() {
   firebase.initializeApp(firebaseConfig);
   database = firebase.database();
   led = database.ref("Data");
-
+  textAlign (CENTER);
   for (let i = 0; i < 100; i++) {
     fragments.push(new Fragment(random(width), random(height)));
   }
@@ -104,20 +104,19 @@ activarBloqueoPantalla();
     }
     fill(255, frameCount);
     textFont(font1);
-    textSize(23);
-    text("Una produccion de Creepy Entertainment", 70, 200);
-    text("Group", 280, 250);
+    textSize(windowWidth/30);
+    text("Una produccion de Creepy Entertainment", width/2, height/2);
+    text("Group", width/2, height/2 + windowHeight/15);
     if (frameCount == 240) {
+    removeElements();    
       estado = 2;
     }
   } else if (estado == 2) {
-    createCanvas(600, 600);
     background(0);
-    if (frameCount == 400) {
+    if (frameCount == 400) {        
       estado = 3;
     }
   } else if (estado == 3) {
-    createCanvas(600,600);
     background(0);
     if (parpadeo == true) {
       transparencia -= 2;
@@ -133,66 +132,67 @@ activarBloqueoPantalla();
 
     fill(255, transparencia);
     textFont(font2);
-    textSize(30);
-    text("Textos funebres para un Robot", 60, 200);
-    if (frameCount >= 720) {
+    textSize(windowWidth/20);
+    text("Textos funebres para un Robot", width/2, height/2);
+    if (frameCount == 720) {removeElements();}
+      if (frameCount >= 720) {
       textFont(font4);
       fill(255);
-      textSize(25);
-      text("Presionate una tecla cualquiera", 100, 350);
+      textSize(windowWidth/30);
+      text("Presionate una tecla cualquiera", width/2, height/2 + windowHeight / 15);
       if (mouseIsPressed || keyIsPressed) {
       if (!musica.isPlaying()) {
       musica.play();
     }  
-        estado = 4;
+          removeElements();
+          estado = 4;
       }
     }
   } else if (estado == 4) {
-    createCanvas(600, 600);
     background(0);
     contador++;
-    textSize(30);
+    textSize(windowWidth/20);
     textFont(font4);
-    text("Ah, ya apretaste!", 90, 100);
-    textSize(25);
+    text("Ah, ya apretaste!", width/2, height/2);
+    textSize(windowWidth/30);
+    if (contador == 180) {removeElements();}  
     if (contador >= 180) {
-      createCanvas(600, 600);
       background(0);
-      text("Me olvide de hacerte\nuna advertencia", 90, 100);
+      text("Me olvide de hacerte\nuna advertencia", width/2, height/2);
     }
+    if (contador == 420) {removeElements();} 
     if (contador >= 420) {
-      createCanvas(600, 600);
       background(0);
-      text("Voy a hacer como que\nno senti nada", 90, 100);
+      text("Voy a hacer como que\nno senti nada", width/2, height/2);
     }
+     if (contador == 640) {removeElements();} 
     if (contador >= 640) {
-      createCanvas(600, 600);
       background(0);
-      text("Asi no empezamos todavia\ny primero te cuento", 90, 100);
+      text("Asi no empezamos todavia\ny primero te cuento", width/2, height/2);
     }
+    if (contador ==820) {removeElements();}  
     if (contador >= 820) {
-      createCanvas(600, 600);
       background(0);
-      text("OK?", 90, 100);
+      text("OK?", width/2, height/2);
     }
+     if (contador == 1000) {removeElements()}  
     if (contador >= 1000) {
-      createCanvas(600,600);
       background(0);
-      text("Voy a suponer\nque estamos\nde acuerdo", 90, 100);
+      text("Voy a suponer\nque estamos\nde acuerdo", width/2, height/2);
     }
+    if (contador == 1160) {removeElements()}   
     if (contador >= 1160) {
-      createCanvas(600, 600);
       background(0);
-      text("Lo que viene\na continuacion\nte puede causar...", 90, 100);
+      text("Lo que viene\na continuacion\nte puede causar...", width/2, height/2);
     }
+    if (contador == 1360) {removeElements()}   
     if (contador >= 1360) {
-      createCanvas(600, 600);
       background(0);
-      text("Un poco de angustia", 90, 100);
+      text("Un poco de angustia", width/2, height/2);
     }
 
+    if (contador == 1480) {removeElements()}   
     if (contador >= 1480) {
-      createCanvas(600, 600);
       background(0);
       text(
         "No mas de la que\nya debes sentir\nen momentos\nrandom del dia",
@@ -200,39 +200,40 @@ activarBloqueoPantalla();
         100
       );
     }
+    if (contador == 1660) {removeElements()}   
     if (contador >= 1660) {
-      createCanvas(600, 600);
       background(0);
-      text("Ya se que tengo razon\nsoy una maquina", 90, 100);
+      text("Ya se que tengo razon\nsoy una maquina", width/2, height/2);
     }
+    if (contador == 1810) {removeElements()}   
     if (contador >= 1810) {
-      createCanvas(600, 600);
       background(0);
-      text("Pero por las dudas\nte avisaba", 90, 100);
+      text("Pero por las dudas\nte avisaba", width/2, height/2);
     }
+    if (contador == 1960) {removeElements()}   
     if (contador >= 1960) {
-      createCanvas(600, 600);
       background(0);
-      text("Ahora si\napreta una tecla\npara empezar", 90, 100);
+      text("Ahora si\napreta una tecla\npara empezar", width/2, height/2);
       if (mouseIsPressed || keyIsPressed) {
         contador = 0;
+        removeElements();  
         estado = 5;
       }
     }
   } else if (estado == 5) {
     contador++;
-    createCanvas(600, 600);
     background(0);
-    text("Ay de nuevo!\nMe olvide de algo mas...", 90, 100);
-    if (contador >= 180) {
-      createCanvas(600, 600);
+    text("Ay de nuevo!\nMe olvide de algo mas...", width/2, height/2);
+    if (contador == 180) {removeElements()} 
+      if (contador >= 180) {
       background(0);
-      text("Este videojuego\nesta basado\nen hechos reales", 90, 100);
+      text("Este videojuego\nesta basado\nen hechos reales", width/2, height/2);
     }
 
     if (contador == 360) {
       contador = 0;
       estado = 6;
+    removeElements();    
     }
   } else if (estado == 6) {
     if (fondo == true) {
