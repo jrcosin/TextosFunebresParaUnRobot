@@ -59,6 +59,10 @@ function preload() {
   musica = loadSound("musicaranchos.mp3");
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
 function setup() {
   createCanvas(windowWidth , windowHeight);
   background(0);
