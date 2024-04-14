@@ -1,3 +1,4 @@
+p5.disableFriendlyErrors = true;
 let i = 20;
 let font1;
 let font2; 
