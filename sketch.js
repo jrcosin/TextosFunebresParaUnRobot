@@ -41,6 +41,8 @@ let creacion_boton = true;
 let texto_termino = false; 
 let wakeLock = null;
 let referenciaCategoria; 
+let canvas = document.getElementById("miCanvas");
+
 
 
 voice = new p5.Speech();
@@ -57,14 +59,12 @@ function preload() {
   font3 = loadFont("fuente3.ttf");
   font4 = loadFont ("font4.ttf");
   musica = loadSound("musicaranchos.mp3");
-}
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+
 }
 
 function setup() {
-  createCanvas(windowWidth , windowHeight);
+createCanvas(windowWidth, windowHeight);    
   background(0);
   const firebaseConfig = {
     apiKey: "AIzaSyBdQTQDCPC67SCHicY069DFwMg-JEoBxmY",
