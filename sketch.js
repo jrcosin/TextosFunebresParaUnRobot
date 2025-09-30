@@ -421,4 +421,4 @@ let textos = {
 
   frase17: "Con mi muerte se perderán | Cuando muera, desaparecerán",
   
-  frase18: "Sin retorno | Definitivamente | Para siempre "
+  frase18: "Sin retorno | Definitivamente | Para siempre " } 
